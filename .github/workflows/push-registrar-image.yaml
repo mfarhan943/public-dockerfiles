@@ -28,6 +28,7 @@ jobs:
             echo "TAG=${{ github.event.inputs.branch }}" >> $GITHUB_ENV
           else
             echo "TAG=${GITHUB_SHA::8}" >> $GITHUB_ENV
+          fi
         # This sets the tag to the branch name for manual trigger and commit SHA for PR
 
       - name: Set up Docker Buildx
