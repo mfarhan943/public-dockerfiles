@@ -46,7 +46,7 @@ jobs:
       - name: Build and push Dev Docker image
         uses: docker/build-push-action@v6
         with:
-          file: ./dockerfiles/registrar.Dockerfile
+          file: ./dockerfiles/course-discovery.Dockerfile
           push: true
           target: dev
           tags: farhan943/practise:${{ env.TAG }}
