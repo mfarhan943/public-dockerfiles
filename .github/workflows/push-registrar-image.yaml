@@ -49,16 +49,3 @@ jobs:
           push: true
           target: dev
           tags: farhan943/practise:${{ env.TAG }}
-
-      - name: Send failure notification
-        if: failure()
-        uses: dawidd6/action-send-mail@v3
-        with:
-          server_address: email-smtp.us-east-1.amazonaws.com
-          server_port: 465
-          username: ${{ secrets.edx_smtp_username }}
-          password: ${{ secrets.edx_smtp_password }}
-          subject: Docker image push failed for ${{ env.TAG }}
-          to: muhammad.farhan@arbisoft.com
-          from: github-actions <github-actions@edx.org>
-          body: Docker image push failed for tag ${{ env.TAG }}! For details see "github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
