@@ -60,6 +60,9 @@ RUN nodeenv ${DISCOVERY_NODEENV_DIR} --node=16.14.0 --prebuilt && npm install -g
 # Working directory will be root of repo.
 WORKDIR ${DISCOVERY_CODE_DIR}
 
+# cloning git repo
+RUN curl -L https://github.com/openedx/course-discovery/archive/refs/heads/master.tar.gz | tar -xz --strip-components=1
+
 # Copy over repository
 COPY . .
 
