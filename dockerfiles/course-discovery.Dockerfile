@@ -1,6 +1,6 @@
 FROM ubuntu:focal as app
 
-ARG PYTHON_VERSION=3.8
+ARG PYTHON_VERSION=3.9
 
 ENV DEBIAN_FRONTEND noninteractive
 # System requirements.
@@ -84,7 +84,8 @@ CMD gunicorn --bind=0.0.0.0:8381 --workers 2 --max-requests=1000 -c course_disco
 FROM app as dev
 
 ENV DJANGO_SETTINGS_MODULE "course_discovery.settings.devstack"
-
+RUN echo "python--version"
+RUN python --version
 RUN pip install -r ${DISCOVERY_CODE_DIR}/requirements/django.txt
 RUN pip install -r ${DISCOVERY_CODE_DIR}/requirements/local.txt
 
